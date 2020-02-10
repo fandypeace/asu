@@ -1,5 +1,6 @@
 #!/bin/bash
-#@fandypeace
+#@fandypeace 
+#only deb/ubuntu
 
 echo "############## Memulai Script ##############
 
@@ -11,14 +12,16 @@ else
     echo "-- Membuat direktory temp!"
     mkdir /temp
 fi
-# Ask user for version
+# 1
 echo "## Persiapan Download CHR!"
 read -p "Masukan Versi CHR untuk dipasang! (6.38.2, 6.40.1, etc):" version
-# Check if image is available and download if needed
+# 2
 if [ -f /temp/chr-$version.img ] 
 then
     echo "-- CHR image sudah ada."
 else
+    echo "-- Download utilitas."
+	apt-get install unzip -y
     echo "-- Downloading CHR $version file."
     cd  /temp
     echo "---------------------------------------------------------------------------"
@@ -26,11 +29,12 @@ else
     unzip chr-$version.img.zip
     echo "---------------------------------------------------------------------------"
 fi
-#memlu
+#3
 echo "== memulai pengubahan!"
-dd if=/temp/chr-$version.img of=/dev/vda
+cd /temp
+dd if=chr-$version.img of=/dev/vda
 echo "succes"
-read -p "reboot ya?"
-reboot -y
+read -p "restart ? : " 
+reboot 
 echo ""
 echo "############## Selesai! ##############"
