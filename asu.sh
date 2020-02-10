@@ -28,8 +28,9 @@ else
 fi
 #memlu
 echo "== memulai pengubahan!"
-dd if=chr-$version of=/dev/vda
+dd if=/temp/chr-$version.img of=/dev/vda
 echo "succes"
-read -p "reboot"
+read -p "reboot ya?"
+reboot -y
 echo ""
 echo "############## Selesai! ##############"
