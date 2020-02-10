@@ -33,8 +33,6 @@ fi
 echo "== memulai pengubahan!"
 cd /temp
 dd if=chr-$version.img of=/dev/vda
-echo "succes"
-read -p "restart ? : " 
-reboot 
-echo ""
+echo "otomatis restart!"
 echo "############## Selesai! ##############"
+/sbin/reboot 
